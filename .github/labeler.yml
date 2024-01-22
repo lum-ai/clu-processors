@@ -1,0 +1,8 @@
+# see https://github.com/actions/labeler
+documentation:
+- any: ["docs/**"]
+#  all: ["!docs/changes.md"]
+
+tests:
+- any:
+  - "python/clu/odin/tests/**"

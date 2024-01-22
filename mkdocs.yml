@@ -1,0 +1,68 @@
+site_name: clu-processors
+site_url: https://lum-ai/clu-processors/docs/
+site_description: Project documentation with Markdown.
+site_author: Gus Hahn-Powell
+
+repo_url: https://github.com/lum-ai/clu-processors/
+edit_uri: "blob/master/docs/"
+
+theme:
+  name: readthedocs
+  highlightjs: true
+  hljs_style: github
+  # list additional languages here
+  hljs_languages:
+    - yaml
+    - scala
+  analytics:
+    gtag: null
+  shortcuts:
+    help: 191    # ?
+    next: 78     # n
+    previous: 80 # p
+    search: 83   # s
+  nav_style: dark
+  locale: en
+
+nav:
+    # NOTE: all relative to docs/
+    - Home: index.md
+    - User Guide:
+        - Installation: install.md
+        - Usage: tutorial.md
+    - Development:
+        - Install: dev/install.md
+        - Documentation: dev/documentation.md
+        - Developing: dev/developing.md
+        - Testing: dev/test.md
+    - Coverage:
+        - Test coverage reports: "coverage/index.html"
+    - API Documentation:
+        - "<code>lum.clu</code>": api/python/lum/clu/index.html
+    - Contributors: authors.md
+
+extra_css:
+    - css/extra.css
+
+markdown_extensions:
+    - toc:
+        permalink: 
+    - admonition
+    - attr_list
+    - def_list
+
+copyright: Copyright &copy; 2024 <a href="https://lum.ai">Lum AI, LLC</a>.
+
+plugins:
+    - search
+
+    # # # see https://github.com/daizutabi/mkapi/
+    # - mkapi
+    # # see https://github.com/mercari/mkdocs-git-snippet
+    - git-snippet
+    # see https://github.com/timvink/mkdocs-git-revision-date-localized-plugin
+    - git-revision-date-localized
+    # see https://github.com/timvink/mkdocs-git-authors-plugin
+    - git-authors
+    # see https://github.com/fralau/mkdocs-mermaid2-plugin
+    - mermaid2
