@@ -50,6 +50,7 @@ class Mention(BaseModel):
   # FIXME: add validation that this is non-empty?
   labels: list[str] = Field(description=&#34;A sequence of labels for this mention. The first label in the sequence is considered the default.&#34;)
   # alias=&#34;tokenInterval&#34;, 
+  # TODO: consider adding https://docs.pydantic.dev/latest/api/config/#pydantic.config.ConfigDict.populate_by_name
   token_interval: Interval  = Field(description=&#34;The interval of token indicess that form this mention.&#34;)
   # alias=&#34;sentence&#34;, 
   sentence_index: int = Field(description=&#34;The index of the sentence where this mention occurs.&#34;)
@@ -1027,6 +1028,7 @@ allow <code>self</code> as a field name.</p></div>
   # FIXME: add validation that this is non-empty?
   labels: list[str] = Field(description=&#34;A sequence of labels for this mention. The first label in the sequence is considered the default.&#34;)
   # alias=&#34;tokenInterval&#34;, 
+  # TODO: consider adding https://docs.pydantic.dev/latest/api/config/#pydantic.config.ConfigDict.populate_by_name
   token_interval: Interval  = Field(description=&#34;The interval of token indicess that form this mention.&#34;)
   # alias=&#34;sentence&#34;, 
   sentence_index: int = Field(description=&#34;The index of the sentence where this mention occurs.&#34;)

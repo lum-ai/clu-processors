@@ -27,7 +27,7 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from pydantic import BaseModel, Field
+<pre><code class="python">from pydantic import BaseModel, Field, ConfigDict
 from lum.clu.processors.sentence import Sentence
 from lum.clu.processors.utils import Labels
 import typing
@@ -38,6 +38,9 @@ class Document(BaseModel):
     &#34;&#34;&#34;
     Storage class for annotated text. Based on [`org.clulab.processors.Document`](https://github.com/clulab/processors/blob/master/main/src/main/scala/org/clulab/processors/Document.scala)
     &#34;&#34;&#34;
+
+    model_config = ConfigDict(populate_by_name=True)
+    
     id: typing.Optional[str] = Field(default=None, description=&#34;A unique ID for the `Document`.&#34;)
 
     text: typing.Optional[str] = Field(default=None, description=&#34; The text of the `Document`.&#34;)
@@ -154,6 +157,9 @@ allow <code>self</code> as a field name.</p></div>
     &#34;&#34;&#34;
     Storage class for annotated text. Based on [`org.clulab.processors.Document`](https://github.com/clulab/processors/blob/master/main/src/main/scala/org/clulab/processors/Document.scala)
     &#34;&#34;&#34;
+
+    model_config = ConfigDict(populate_by_name=True)
+    
     id: typing.Optional[str] = Field(default=None, description=&#34;A unique ID for the `Document`.&#34;)
 
     text: typing.Optional[str] = Field(default=None, description=&#34; The text of the `Document`.&#34;)
