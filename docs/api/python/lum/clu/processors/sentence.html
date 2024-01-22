@@ -1,0 +1,686 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>lum.clu.processors.sentence API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>lum.clu.processors.sentence</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from __future__ import annotations
+from pydantic import BaseModel, Field, model_validator
+from lum.clu.processors.directed_graph import DirectedGraph
+from lum.clu.processors.utils import Labels
+import typing
+
+__all__ = [&#34;Sentence&#34;]
+
+class Sentence(BaseModel):
+
+    UNKNOWN: typing.ClassVar[str] = Labels.UNKNOWN
+    # the O in IOB notation
+    O: typing.ClassVar[str] = Labels.O
+
+    &#34;&#34;&#34;
+    Storage class for an annotated sentence. Based on [`org.clulab.processors.Sentence`](https://github.com/clulab/processors/blob/master/main/src/main/scala/org/clulab/processors/Sentence.scala)
+    &#34;&#34;&#34;
+    text: typing.Optional[str] = Field(default=None, description=&#34; The text of the `Sentence`.&#34;)
+
+    raw: list[str] = Field(description=&#34;Raw tokens in this sentence; these are expected to match the original text&#34;)
+    
+    words: list[str] = Field(description=&#34;A list of the `Sentence`&#39;s tokens.&#34;)
+
+    start_offsets: list[int] = Field(alias=&#34;startOffsets&#34;, description=&#34;The character offsets starting each token (inclusive).&#34;)
+
+    end_offsets: list[int] = Field(alias=&#34;endOffsets&#34;, description=&#34;The character offsets marking the end of each token (exclusive).&#34;)
+
+    tags: typing.Optional[list[str]] = Field(default=None, description=&#34;A list of the `Sentence`&#39;s tokens represented using part of speech (PoS) tags.&#34;)
+
+    lemmas: typing.Optional[list[str]] = Field(default=None, description=&#34;A list of the `Sentence`&#39;s tokens represented using lemmas.&#34;)
+
+    norms: typing.Optional[list[str]] = Field(default=None, description=&#34;Normalized values of named/numeric entities, such as dates.&#34;)
+
+    chunks: typing.Optional[list[str]] = Field(default=None, description=&#34;A list of the `Sentence`&#39;s tokens represented using IOB-style phrase labels (ex. `B-NP`, `I-NP`, `B-VP`, etc.).&#34;)
+
+    entities: typing.Optional[list[str]] = Field(default=None, description=&#34;A list of the `Sentence`&#39;s tokens represented using IOB-style named entity (NE) labels.&#34;)
+
+    graphs: dict[str, DirectedGraph] = Field(description=&#34;A dictionary (str -&gt; `lum.clu.processors.doc.DirectedGraph`) mapping the graph type/name to a `lum.clu.processors.doc.DirectedGraph`.&#34;)
+
+    @model_validator(mode=&#34;before&#34;)
+    @classmethod
+    def raw_or_words(cls, data: typing.Any) -&gt; typing.Any:
+        &#34;&#34;&#34;if `raw` is not present, use `words` in its place.&#34;&#34;&#34;
+        if isinstance(data, dict):
+            words = data.get(&#34;words&#34;, None)
+            raw = data.get(&#34;raw&#34;, None)
+            if raw is None:
+                data[&#34;raw&#34;] = words
+        return data
+    
+    # length : int
+    #     The number of tokens in the `Sentence`
+
+    # basic_dependencies : lum.clu.processors.doc.DirectedGraph
+    #     A `lum.clu.processors.doc.DirectedGraph` using basic Stanford dependencies.
+
+    # collapsed_dependencies : lum.clu.processors.doc.DirectedGraph
+    #     A `lum.clu.processors.doc.DirectedGraph` using collapsed Stanford dependencies.
+
+    # dependencies : lum.clu.processors.doc.DirectedGraph
+    #     A pointer to the prefered syntactic dependency graph type for this `Sentence`.
+
+    # _entities : [str]
+    #     The IOB-style Named Entity (NE) labels corresponding to each token.
+
+    # _chunks : [str]
+    #     The IOB-style chunk labels corresponding to each token.
+
+    # nes : dict
+    #     A dictionary of NE labels represented in the `Document` -&gt; a list of corresponding text spans (ex. {&#34;PERSON&#34;: [phrase 1, ..., phrase n]}). Built from `Sentence._entities`
+
+    # phrases : dict
+    #     A dictionary of chunk labels represented in the `Document` -&gt; a list of corresponding text spans (ex. {&#34;NP&#34;: [phrase 1, ..., phrase n]}). Built from `Sentence._chunks`
+
+
+    # Methods
+    # -------
+    # bag_of_labeled_dependencies_using(form)
+    #     Produces a list of syntactic dependencies where each edge is labeled with its grammatical relation.
+
+    # bag_of_unlabeled_dependencies_using(form)
+    #     Produces a list of syntactic dependencies where each edge is left unlabeled without its grammatical relation.
+
+    @property
+    def length(self) -&gt; int:
+      return len(self.raw)
+
+
+        # self.basic_dependencies = self.graphs.get(DirectedGraph.STANFORD_BASIC_DEPENDENCIES, None)
+        # self.collapsed_dependencies = self.graphs.get(DirectedGraph.STANFORD_COLLAPSED_DEPENDENCIES, None)
+        # self.dependencies = self.collapsed_dependencies if self.collapsed_dependencies != None else self.basic_dependencies
+        # # IOB tokens -&gt; {label: [phrase 1, ..., phrase n]}
+        # self.nes = self._handle_iob(self._entities)
+        # self.phrases = self._handle_iob(self._chunks)
+
+    # def __eq__(self, other):
+    #     if isinstance(other, self.__class__):
+    #         return self.to_JSON() == other.to_JSON()
+    #     else:
+    #         return False
+
+    # def __ne__(self, other):
+    #     return not self.__eq__(other)
+
+    # def __hash__(self):
+    #     return hash(self.to_JSON(pretty=False))
+
+    # def deduplication_hash(self):
+    #     &#34;&#34;&#34;
+    #     Generates a deduplication hash for the sentence
+    #     &#34;&#34;&#34;
+    #     return hashlib.sha256(self.to_JSON(pretty=False).encode()).hexdigest()
+
+    # def _get_tokens(self, form):
+    #     f = form.lower()
+    #     if f == &#34;words&#34;:
+    #         tokens = self.words
+    #     elif f == &#34;tags&#34;:
+    #         tokens = self.tags
+    #     elif f == &#34;lemmas&#34;:
+    #         tokens = self.lemmas
+    #     elif f == &#34;entities&#34;:
+    #         tokens = self.nes
+    #     elif f == &#34;index&#34;:
+    #         tokens = list(range(self.length))
+    #     # unrecognized form
+    #     else:
+    #         raise Exception(&#34;&#34;&#34;form must be &#39;words&#39;, &#39;tags&#39;, &#39;lemmas&#39;, or &#39;index&#39;&#34;&#34;&#34;)
+    #     return tokens
+
+    # def _set_toks(self, toks):
+    #     return toks if toks else [Sentence.UNKNOWN]*self.length
+
+    # def _handle_iob(self, iob):
+    #     &#34;&#34;&#34;
+    #     Consolidates consecutive tokens in IOB notation under the appropriate label.
+    #     Regexs control for bionlp annotator, which uses IOB notation.
+    #     &#34;&#34;&#34;
+    #     entity_dict = defaultdict(list)
+    #     # initialize to empty label
+    #     current = Sentence.O
+    #     start = None
+    #     end = None
+    #     for i, tok in enumerate(iob):
+    #         # we don&#39;t have an I or O
+    #         if tok == Sentence.O:
+    #             # did we have an entity with the last token?
+    #             current = re.sub(&#39;(B-|I-)&#39;,&#39;&#39;, str(current))
+    #             if current == Sentence.O:
+    #                 continue
+    #             else:
+    #                 # the last sequence has ended
+    #                 end = i
+    #                 # store the entity
+    #                 named_entity = &#39; &#39;.join(self.words[start:end])
+    #                 entity_dict[current].append(named_entity)
+    #                 # reset our book-keeping vars
+    #                 current = Sentence.O
+    #                 start = None
+    #                 end = None
+    #         # we have a tag!
+    #         else:
+    #             # our old sequence continues
+    #             current = re.sub(&#39;(B-|I-)&#39;,&#39;&#39;, str(current))
+    #             tok = re.sub(&#39;(B-|I-)&#39;,&#39;&#39;, str(tok))
+    #             if tok == current:
+    #                 end = i
+    #             # our old sequence has ended
+    #             else:
+    #                 # do we have a previous NE?
+    #                 if current != Sentence.O:
+    #                     end = i
+    #                     named_entity = &#39; &#39;.join(self.words[start:end])
+    #                     entity_dict[current].append(named_entity)
+    #                 # update our book-keeping vars
+    #                 current = tok
+    #                 start = i
+    #                 end = None
+    #     # this might be empty
+    #     return entity_dict
+
+
+    # def bag_of_labeled_dependencies_using(self, form):
+    #     &#34;&#34;&#34;
+    #     Produces a list of syntactic dependencies
+    #     where each edge is labeled with its grammatical relation.
+    #     &#34;&#34;&#34;
+    #     tokens = self._get_tokens(form)
+    #     return self.labeled_dependencies_from_tokens(tokens) if tokens else None
+
+    # def bag_of_unlabeled_dependencies_using(self, form):
+    #     &#34;&#34;&#34;
+    #     Produces a list of syntactic dependencies
+    #     where each edge is left unlabeled without its grammatical relation.
+    #     &#34;&#34;&#34;
+    #     tokens = self._get_tokens(form)
+    #     return self.unlabeled_dependencies_from_tokens(tokens) if tokens else None
+
+    # def labeled_dependencies_from_tokens(self, tokens):
+    #     &#34;&#34;&#34;
+    #     Generates a list of labeled dependencies for a sentence
+    #     using the provided tokens
+    #     &#34;&#34;&#34;
+    #     deps = self.dependencies
+    #     labeled = []
+    #     return [(tokens[out], rel, tokens[dest]) \
+    #             for out in deps.outgoing \
+    #             for (dest, rel) in deps.outgoing[out]]
+
+    # def unlabeled_dependencies_from_tokens(self, tokens):
+    #     &#34;&#34;&#34;
+    #     Generate a list of unlabeled dependencies for a sentence
+    #     using the provided tokens
+    #     &#34;&#34;&#34;
+    #     return [(head, dep) for (head, rel, dep) in self.labeled_dependencies_from_tokens(tokens)]
+
+    # def semantic_head(self, graph_name=&#34;stanford-collapsed&#34;, valid_tags={r&#34;^N&#34;, &#34;VBG&#34;}, valid_indices=None):
+    #     return HeadFinder.semantic_head(self, graph_name, valid_tags, valid_indices)</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="lum.clu.processors.sentence.Sentence"><code class="flex name class">
+<span>class <span class="ident">Sentence</span></span>
+<span>(</span><span>**data: Any)</span>
+</code></dt>
+<dd>
+<div class="desc"><p>Usage docs: <a href="https://docs.pydantic.dev/2.5/concepts/models/">https://docs.pydantic.dev/2.5/concepts/models/</a></p>
+<p>A base class for creating Pydantic models.</p>
+<h2 id="attributes">Attributes</h2>
+<dl>
+<dt><strong><code>__class_vars__</code></strong></dt>
+<dd>The names of classvars defined on the model.</dd>
+<dt><strong><code>__private_attributes__</code></strong></dt>
+<dd>Metadata about the private attributes of the model.</dd>
+<dt><strong><code>__signature__</code></strong></dt>
+<dd>The signature for instantiating the model.</dd>
+<dt><strong><code>__pydantic_complete__</code></strong></dt>
+<dd>Whether model building is completed, or if there are still undefined fields.</dd>
+<dt><strong><code>__pydantic_core_schema__</code></strong></dt>
+<dd>The pydantic-core schema used to build the SchemaValidator and SchemaSerializer.</dd>
+<dt><strong><code>__pydantic_custom_init__</code></strong></dt>
+<dd>Whether the model has a custom <code>__init__</code> function.</dd>
+<dt><strong><code>__pydantic_decorators__</code></strong></dt>
+<dd>Metadata containing the decorators defined on the model.
+This replaces <code>Model.__validators__</code> and <code>Model.__root_validators__</code> from Pydantic V1.</dd>
+<dt><strong><code>__pydantic_generic_metadata__</code></strong></dt>
+<dd>Metadata for generic models; contains data used for a similar purpose to
+<strong>args</strong>, <strong>origin</strong>, <strong>parameters</strong> in typing-module generics. May eventually be replaced by these.</dd>
+<dt><strong><code>__pydantic_parent_namespace__</code></strong></dt>
+<dd>Parent namespace of the model, used for automatic rebuilding of models.</dd>
+<dt><strong><code>__pydantic_post_init__</code></strong></dt>
+<dd>The name of the post-init method for the model, if defined.</dd>
+<dt><strong><code>__pydantic_root_model__</code></strong></dt>
+<dd>Whether the model is a <code>RootModel</code>.</dd>
+<dt><strong><code>__pydantic_serializer__</code></strong></dt>
+<dd>The pydantic-core SchemaSerializer used to dump instances of the model.</dd>
+<dt><strong><code>__pydantic_validator__</code></strong></dt>
+<dd>The pydantic-core SchemaValidator used to validate instances of the model.</dd>
+<dt><strong><code>__pydantic_extra__</code></strong></dt>
+<dd>An instance attribute with the values of extra fields from validation when
+<code>model_config['extra'] == 'allow'</code>.</dd>
+<dt><strong><code>__pydantic_fields_set__</code></strong></dt>
+<dd>An instance attribute with the names of fields explicitly set.</dd>
+<dt><strong><code>__pydantic_private__</code></strong></dt>
+<dd>Instance attribute with the values of private attributes set on the model instance.</dd>
+</dl>
+<p>Create a new model by parsing and validating input data from keyword arguments.</p>
+<p>Raises [<code>ValidationError</code>][pydantic_core.ValidationError] if the input data cannot be
+validated to form a valid model.</p>
+<p><code>__init__</code> uses <code>__pydantic_self__</code> instead of the more common <code>self</code> for the first arg to
+allow <code>self</code> as a field name.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class Sentence(BaseModel):
+
+    UNKNOWN: typing.ClassVar[str] = Labels.UNKNOWN
+    # the O in IOB notation
+    O: typing.ClassVar[str] = Labels.O
+
+    &#34;&#34;&#34;
+    Storage class for an annotated sentence. Based on [`org.clulab.processors.Sentence`](https://github.com/clulab/processors/blob/master/main/src/main/scala/org/clulab/processors/Sentence.scala)
+    &#34;&#34;&#34;
+    text: typing.Optional[str] = Field(default=None, description=&#34; The text of the `Sentence`.&#34;)
+
+    raw: list[str] = Field(description=&#34;Raw tokens in this sentence; these are expected to match the original text&#34;)
+    
+    words: list[str] = Field(description=&#34;A list of the `Sentence`&#39;s tokens.&#34;)
+
+    start_offsets: list[int] = Field(alias=&#34;startOffsets&#34;, description=&#34;The character offsets starting each token (inclusive).&#34;)
+
+    end_offsets: list[int] = Field(alias=&#34;endOffsets&#34;, description=&#34;The character offsets marking the end of each token (exclusive).&#34;)
+
+    tags: typing.Optional[list[str]] = Field(default=None, description=&#34;A list of the `Sentence`&#39;s tokens represented using part of speech (PoS) tags.&#34;)
+
+    lemmas: typing.Optional[list[str]] = Field(default=None, description=&#34;A list of the `Sentence`&#39;s tokens represented using lemmas.&#34;)
+
+    norms: typing.Optional[list[str]] = Field(default=None, description=&#34;Normalized values of named/numeric entities, such as dates.&#34;)
+
+    chunks: typing.Optional[list[str]] = Field(default=None, description=&#34;A list of the `Sentence`&#39;s tokens represented using IOB-style phrase labels (ex. `B-NP`, `I-NP`, `B-VP`, etc.).&#34;)
+
+    entities: typing.Optional[list[str]] = Field(default=None, description=&#34;A list of the `Sentence`&#39;s tokens represented using IOB-style named entity (NE) labels.&#34;)
+
+    graphs: dict[str, DirectedGraph] = Field(description=&#34;A dictionary (str -&gt; `lum.clu.processors.doc.DirectedGraph`) mapping the graph type/name to a `lum.clu.processors.doc.DirectedGraph`.&#34;)
+
+    @model_validator(mode=&#34;before&#34;)
+    @classmethod
+    def raw_or_words(cls, data: typing.Any) -&gt; typing.Any:
+        &#34;&#34;&#34;if `raw` is not present, use `words` in its place.&#34;&#34;&#34;
+        if isinstance(data, dict):
+            words = data.get(&#34;words&#34;, None)
+            raw = data.get(&#34;raw&#34;, None)
+            if raw is None:
+                data[&#34;raw&#34;] = words
+        return data
+    
+    # length : int
+    #     The number of tokens in the `Sentence`
+
+    # basic_dependencies : lum.clu.processors.doc.DirectedGraph
+    #     A `lum.clu.processors.doc.DirectedGraph` using basic Stanford dependencies.
+
+    # collapsed_dependencies : lum.clu.processors.doc.DirectedGraph
+    #     A `lum.clu.processors.doc.DirectedGraph` using collapsed Stanford dependencies.
+
+    # dependencies : lum.clu.processors.doc.DirectedGraph
+    #     A pointer to the prefered syntactic dependency graph type for this `Sentence`.
+
+    # _entities : [str]
+    #     The IOB-style Named Entity (NE) labels corresponding to each token.
+
+    # _chunks : [str]
+    #     The IOB-style chunk labels corresponding to each token.
+
+    # nes : dict
+    #     A dictionary of NE labels represented in the `Document` -&gt; a list of corresponding text spans (ex. {&#34;PERSON&#34;: [phrase 1, ..., phrase n]}). Built from `Sentence._entities`
+
+    # phrases : dict
+    #     A dictionary of chunk labels represented in the `Document` -&gt; a list of corresponding text spans (ex. {&#34;NP&#34;: [phrase 1, ..., phrase n]}). Built from `Sentence._chunks`
+
+
+    # Methods
+    # -------
+    # bag_of_labeled_dependencies_using(form)
+    #     Produces a list of syntactic dependencies where each edge is labeled with its grammatical relation.
+
+    # bag_of_unlabeled_dependencies_using(form)
+    #     Produces a list of syntactic dependencies where each edge is left unlabeled without its grammatical relation.
+
+    @property
+    def length(self) -&gt; int:
+      return len(self.raw)
+
+
+        # self.basic_dependencies = self.graphs.get(DirectedGraph.STANFORD_BASIC_DEPENDENCIES, None)
+        # self.collapsed_dependencies = self.graphs.get(DirectedGraph.STANFORD_COLLAPSED_DEPENDENCIES, None)
+        # self.dependencies = self.collapsed_dependencies if self.collapsed_dependencies != None else self.basic_dependencies
+        # # IOB tokens -&gt; {label: [phrase 1, ..., phrase n]}
+        # self.nes = self._handle_iob(self._entities)
+        # self.phrases = self._handle_iob(self._chunks)
+
+    # def __eq__(self, other):
+    #     if isinstance(other, self.__class__):
+    #         return self.to_JSON() == other.to_JSON()
+    #     else:
+    #         return False
+
+    # def __ne__(self, other):
+    #     return not self.__eq__(other)
+
+    # def __hash__(self):
+    #     return hash(self.to_JSON(pretty=False))
+
+    # def deduplication_hash(self):
+    #     &#34;&#34;&#34;
+    #     Generates a deduplication hash for the sentence
+    #     &#34;&#34;&#34;
+    #     return hashlib.sha256(self.to_JSON(pretty=False).encode()).hexdigest()
+
+    # def _get_tokens(self, form):
+    #     f = form.lower()
+    #     if f == &#34;words&#34;:
+    #         tokens = self.words
+    #     elif f == &#34;tags&#34;:
+    #         tokens = self.tags
+    #     elif f == &#34;lemmas&#34;:
+    #         tokens = self.lemmas
+    #     elif f == &#34;entities&#34;:
+    #         tokens = self.nes
+    #     elif f == &#34;index&#34;:
+    #         tokens = list(range(self.length))
+    #     # unrecognized form
+    #     else:
+    #         raise Exception(&#34;&#34;&#34;form must be &#39;words&#39;, &#39;tags&#39;, &#39;lemmas&#39;, or &#39;index&#39;&#34;&#34;&#34;)
+    #     return tokens
+
+    # def _set_toks(self, toks):
+    #     return toks if toks else [Sentence.UNKNOWN]*self.length
+
+    # def _handle_iob(self, iob):
+    #     &#34;&#34;&#34;
+    #     Consolidates consecutive tokens in IOB notation under the appropriate label.
+    #     Regexs control for bionlp annotator, which uses IOB notation.
+    #     &#34;&#34;&#34;
+    #     entity_dict = defaultdict(list)
+    #     # initialize to empty label
+    #     current = Sentence.O
+    #     start = None
+    #     end = None
+    #     for i, tok in enumerate(iob):
+    #         # we don&#39;t have an I or O
+    #         if tok == Sentence.O:
+    #             # did we have an entity with the last token?
+    #             current = re.sub(&#39;(B-|I-)&#39;,&#39;&#39;, str(current))
+    #             if current == Sentence.O:
+    #                 continue
+    #             else:
+    #                 # the last sequence has ended
+    #                 end = i
+    #                 # store the entity
+    #                 named_entity = &#39; &#39;.join(self.words[start:end])
+    #                 entity_dict[current].append(named_entity)
+    #                 # reset our book-keeping vars
+    #                 current = Sentence.O
+    #                 start = None
+    #                 end = None
+    #         # we have a tag!
+    #         else:
+    #             # our old sequence continues
+    #             current = re.sub(&#39;(B-|I-)&#39;,&#39;&#39;, str(current))
+    #             tok = re.sub(&#39;(B-|I-)&#39;,&#39;&#39;, str(tok))
+    #             if tok == current:
+    #                 end = i
+    #             # our old sequence has ended
+    #             else:
+    #                 # do we have a previous NE?
+    #                 if current != Sentence.O:
+    #                     end = i
+    #                     named_entity = &#39; &#39;.join(self.words[start:end])
+    #                     entity_dict[current].append(named_entity)
+    #                 # update our book-keeping vars
+    #                 current = tok
+    #                 start = i
+    #                 end = None
+    #     # this might be empty
+    #     return entity_dict
+
+
+    # def bag_of_labeled_dependencies_using(self, form):
+    #     &#34;&#34;&#34;
+    #     Produces a list of syntactic dependencies
+    #     where each edge is labeled with its grammatical relation.
+    #     &#34;&#34;&#34;
+    #     tokens = self._get_tokens(form)
+    #     return self.labeled_dependencies_from_tokens(tokens) if tokens else None
+
+    # def bag_of_unlabeled_dependencies_using(self, form):
+    #     &#34;&#34;&#34;
+    #     Produces a list of syntactic dependencies
+    #     where each edge is left unlabeled without its grammatical relation.
+    #     &#34;&#34;&#34;
+    #     tokens = self._get_tokens(form)
+    #     return self.unlabeled_dependencies_from_tokens(tokens) if tokens else None
+
+    # def labeled_dependencies_from_tokens(self, tokens):
+    #     &#34;&#34;&#34;
+    #     Generates a list of labeled dependencies for a sentence
+    #     using the provided tokens
+    #     &#34;&#34;&#34;
+    #     deps = self.dependencies
+    #     labeled = []
+    #     return [(tokens[out], rel, tokens[dest]) \
+    #             for out in deps.outgoing \
+    #             for (dest, rel) in deps.outgoing[out]]
+
+    # def unlabeled_dependencies_from_tokens(self, tokens):
+    #     &#34;&#34;&#34;
+    #     Generate a list of unlabeled dependencies for a sentence
+    #     using the provided tokens
+    #     &#34;&#34;&#34;
+    #     return [(head, dep) for (head, rel, dep) in self.labeled_dependencies_from_tokens(tokens)]
+
+    # def semantic_head(self, graph_name=&#34;stanford-collapsed&#34;, valid_tags={r&#34;^N&#34;, &#34;VBG&#34;}, valid_indices=None):
+    #     return HeadFinder.semantic_head(self, graph_name, valid_tags, valid_indices)</code></pre>
+</details>
+<h3>Ancestors</h3>
+<ul class="hlist">
+<li>pydantic.main.BaseModel</li>
+</ul>
+<h3>Class variables</h3>
+<dl>
+<dt id="lum.clu.processors.sentence.Sentence.O"><code class="name">var <span class="ident">O</span> : ClassVar[str]</code></dt>
+<dd>
+<div class="desc"><p>Storage class for an annotated sentence. Based on <a href="https://github.com/clulab/processors/blob/master/main/src/main/scala/org/clulab/processors/Sentence.scala"><code>org.clulab.processors.Sentence</code></a></p></div>
+</dd>
+<dt id="lum.clu.processors.sentence.Sentence.UNKNOWN"><code class="name">var <span class="ident">UNKNOWN</span> : ClassVar[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="lum.clu.processors.sentence.Sentence.chunks"><code class="name">var <span class="ident">chunks</span> : Optional[list[str]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="lum.clu.processors.sentence.Sentence.end_offsets"><code class="name">var <span class="ident">end_offsets</span> : list[int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="lum.clu.processors.sentence.Sentence.entities"><code class="name">var <span class="ident">entities</span> : Optional[list[str]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="lum.clu.processors.sentence.Sentence.graphs"><code class="name">var <span class="ident">graphs</span> : dict[str, <a title="lum.clu.processors.directed_graph.DirectedGraph" href="directed_graph.html#lum.clu.processors.directed_graph.DirectedGraph">DirectedGraph</a>]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="lum.clu.processors.sentence.Sentence.lemmas"><code class="name">var <span class="ident">lemmas</span> : Optional[list[str]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="lum.clu.processors.sentence.Sentence.model_config"><code class="name">var <span class="ident">model_config</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="lum.clu.processors.sentence.Sentence.model_fields"><code class="name">var <span class="ident">model_fields</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="lum.clu.processors.sentence.Sentence.norms"><code class="name">var <span class="ident">norms</span> : Optional[list[str]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="lum.clu.processors.sentence.Sentence.raw"><code class="name">var <span class="ident">raw</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="lum.clu.processors.sentence.Sentence.start_offsets"><code class="name">var <span class="ident">start_offsets</span> : list[int]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="lum.clu.processors.sentence.Sentence.tags"><code class="name">var <span class="ident">tags</span> : Optional[list[str]]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="lum.clu.processors.sentence.Sentence.text"><code class="name">var <span class="ident">text</span> : Optional[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="lum.clu.processors.sentence.Sentence.words"><code class="name">var <span class="ident">words</span> : list[str]</code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="lum.clu.processors.sentence.Sentence.raw_or_words"><code class="name flex">
+<span>def <span class="ident">raw_or_words</span></span>(<span>data: typing.Any) ‑> Any</span>
+</code></dt>
+<dd>
+<div class="desc"><p>if <code>raw</code> is not present, use <code>words</code> in its place.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@model_validator(mode=&#34;before&#34;)
+@classmethod
+def raw_or_words(cls, data: typing.Any) -&gt; typing.Any:
+    &#34;&#34;&#34;if `raw` is not present, use `words` in its place.&#34;&#34;&#34;
+    if isinstance(data, dict):
+        words = data.get(&#34;words&#34;, None)
+        raw = data.get(&#34;raw&#34;, None)
+        if raw is None:
+            data[&#34;raw&#34;] = words
+    return data</code></pre>
+</details>
+</dd>
+</dl>
+<h3>Instance variables</h3>
+<dl>
+<dt id="lum.clu.processors.sentence.Sentence.length"><code class="name">var <span class="ident">length</span> : int</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@property
+def length(self) -&gt; int:
+  return len(self.raw)
+
+
+    # self.basic_dependencies = self.graphs.get(DirectedGraph.STANFORD_BASIC_DEPENDENCIES, None)
+    # self.collapsed_dependencies = self.graphs.get(DirectedGraph.STANFORD_COLLAPSED_DEPENDENCIES, None)
+    # self.dependencies = self.collapsed_dependencies if self.collapsed_dependencies != None else self.basic_dependencies
+    # # IOB tokens -&gt; {label: [phrase 1, ..., phrase n]}
+    # self.nes = self._handle_iob(self._entities)
+    # self.phrases = self._handle_iob(self._chunks)</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="lum.clu.processors" href="index.html">lum.clu.processors</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="lum.clu.processors.sentence.Sentence" href="#lum.clu.processors.sentence.Sentence">Sentence</a></code></h4>
+<ul class="two-column">
+<li><code><a title="lum.clu.processors.sentence.Sentence.O" href="#lum.clu.processors.sentence.Sentence.O">O</a></code></li>
+<li><code><a title="lum.clu.processors.sentence.Sentence.UNKNOWN" href="#lum.clu.processors.sentence.Sentence.UNKNOWN">UNKNOWN</a></code></li>
+<li><code><a title="lum.clu.processors.sentence.Sentence.chunks" href="#lum.clu.processors.sentence.Sentence.chunks">chunks</a></code></li>
+<li><code><a title="lum.clu.processors.sentence.Sentence.end_offsets" href="#lum.clu.processors.sentence.Sentence.end_offsets">end_offsets</a></code></li>
+<li><code><a title="lum.clu.processors.sentence.Sentence.entities" href="#lum.clu.processors.sentence.Sentence.entities">entities</a></code></li>
+<li><code><a title="lum.clu.processors.sentence.Sentence.graphs" href="#lum.clu.processors.sentence.Sentence.graphs">graphs</a></code></li>
+<li><code><a title="lum.clu.processors.sentence.Sentence.lemmas" href="#lum.clu.processors.sentence.Sentence.lemmas">lemmas</a></code></li>
+<li><code><a title="lum.clu.processors.sentence.Sentence.length" href="#lum.clu.processors.sentence.Sentence.length">length</a></code></li>
+<li><code><a title="lum.clu.processors.sentence.Sentence.model_config" href="#lum.clu.processors.sentence.Sentence.model_config">model_config</a></code></li>
+<li><code><a title="lum.clu.processors.sentence.Sentence.model_fields" href="#lum.clu.processors.sentence.Sentence.model_fields">model_fields</a></code></li>
+<li><code><a title="lum.clu.processors.sentence.Sentence.norms" href="#lum.clu.processors.sentence.Sentence.norms">norms</a></code></li>
+<li><code><a title="lum.clu.processors.sentence.Sentence.raw" href="#lum.clu.processors.sentence.Sentence.raw">raw</a></code></li>
+<li><code><a title="lum.clu.processors.sentence.Sentence.raw_or_words" href="#lum.clu.processors.sentence.Sentence.raw_or_words">raw_or_words</a></code></li>
+<li><code><a title="lum.clu.processors.sentence.Sentence.start_offsets" href="#lum.clu.processors.sentence.Sentence.start_offsets">start_offsets</a></code></li>
+<li><code><a title="lum.clu.processors.sentence.Sentence.tags" href="#lum.clu.processors.sentence.Sentence.tags">tags</a></code></li>
+<li><code><a title="lum.clu.processors.sentence.Sentence.text" href="#lum.clu.processors.sentence.Sentence.text">text</a></code></li>
+<li><code><a title="lum.clu.processors.sentence.Sentence.words" href="#lum.clu.processors.sentence.Sentence.words">words</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>

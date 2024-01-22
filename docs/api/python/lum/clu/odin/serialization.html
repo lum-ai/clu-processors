@@ -1,0 +1,723 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1" />
+<meta name="generator" content="pdoc 0.10.0" />
+<title>lum.clu.odin.serialization API documentation</title>
+<meta name="description" content="" />
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/sanitize.min.css" integrity="sha256-PK9q560IAAa6WVRRh76LtCaI8pjTJ2z11v0miyNNjrs=" crossorigin>
+<link rel="preload stylesheet" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/10up-sanitize.css/11.0.1/typography.min.css" integrity="sha256-7l/o7C8jubJiy74VsKTidCy1yBkRtiUGbVkYBylBqUg=" crossorigin>
+<link rel="stylesheet preload" as="style" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/styles/github.min.css" crossorigin>
+<style>:root{--highlight-color:#fe9}.flex{display:flex !important}body{line-height:1.5em}#content{padding:20px}#sidebar{padding:30px;overflow:hidden}#sidebar > *:last-child{margin-bottom:2cm}.http-server-breadcrumbs{font-size:130%;margin:0 0 15px 0}#footer{font-size:.75em;padding:5px 30px;border-top:1px solid #ddd;text-align:right}#footer p{margin:0 0 0 1em;display:inline-block}#footer p:last-child{margin-right:30px}h1,h2,h3,h4,h5{font-weight:300}h1{font-size:2.5em;line-height:1.1em}h2{font-size:1.75em;margin:1em 0 .50em 0}h3{font-size:1.4em;margin:25px 0 10px 0}h4{margin:0;font-size:105%}h1:target,h2:target,h3:target,h4:target,h5:target,h6:target{background:var(--highlight-color);padding:.2em 0}a{color:#058;text-decoration:none;transition:color .3s ease-in-out}a:hover{color:#e82}.title code{font-weight:bold}h2[id^="header-"]{margin-top:2em}.ident{color:#900}pre code{background:#f8f8f8;font-size:.8em;line-height:1.4em}code{background:#f2f2f1;padding:1px 4px;overflow-wrap:break-word}h1 code{background:transparent}pre{background:#f8f8f8;border:0;border-top:1px solid #ccc;border-bottom:1px solid #ccc;margin:1em 0;padding:1ex}#http-server-module-list{display:flex;flex-flow:column}#http-server-module-list div{display:flex}#http-server-module-list dt{min-width:10%}#http-server-module-list p{margin-top:0}.toc ul,#index{list-style-type:none;margin:0;padding:0}#index code{background:transparent}#index h3{border-bottom:1px solid #ddd}#index ul{padding:0}#index h4{margin-top:.6em;font-weight:bold}@media (min-width:200ex){#index .two-column{column-count:2}}@media (min-width:300ex){#index .two-column{column-count:3}}dl{margin-bottom:2em}dl dl:last-child{margin-bottom:4em}dd{margin:0 0 1em 3em}#header-classes + dl > dd{margin-bottom:3em}dd dd{margin-left:2em}dd p{margin:10px 0}.name{background:#eee;font-weight:bold;font-size:.85em;padding:5px 10px;display:inline-block;min-width:40%}.name:hover{background:#e0e0e0}dt:target .name{background:var(--highlight-color)}.name > span:first-child{white-space:nowrap}.name.class > span:nth-child(2){margin-left:.4em}.inherited{color:#999;border-left:5px solid #eee;padding-left:1em}.inheritance em{font-style:normal;font-weight:bold}.desc h2{font-weight:400;font-size:1.25em}.desc h3{font-size:1em}.desc dt code{background:inherit}.source summary,.git-link-div{color:#666;text-align:right;font-weight:400;font-size:.8em;text-transform:uppercase}.source summary > *{white-space:nowrap;cursor:pointer}.git-link{color:inherit;margin-left:1em}.source pre{max-height:500px;overflow:auto;margin:0}.source pre code{font-size:12px;overflow:visible}.hlist{list-style:none}.hlist li{display:inline}.hlist li:after{content:',\2002'}.hlist li:last-child:after{content:none}.hlist .hlist{display:inline;padding-left:1em}img{max-width:100%}td{padding:0 .5em}.admonition{padding:.1em .5em;margin-bottom:1em}.admonition-title{font-weight:bold}.admonition.note,.admonition.info,.admonition.important{background:#aef}.admonition.todo,.admonition.versionadded,.admonition.tip,.admonition.hint{background:#dfd}.admonition.warning,.admonition.versionchanged,.admonition.deprecated{background:#fd4}.admonition.error,.admonition.danger,.admonition.caution{background:lightpink}</style>
+<style media="screen and (min-width: 700px)">@media screen and (min-width:700px){#sidebar{width:30%;height:100vh;overflow:auto;position:sticky;top:0}#content{width:70%;max-width:100ch;padding:3em 4em;border-left:1px solid #ddd}pre code{font-size:1em}.item .name{font-size:1em}main{display:flex;flex-direction:row-reverse;justify-content:flex-end}.toc ul ul,#index ul{padding-left:1.5em}.toc > ul > li{margin-top:.5em}}</style>
+<style media="print">@media print{#sidebar h1{page-break-before:always}.source{display:none}}@media print{*{background:transparent !important;color:#000 !important;box-shadow:none !important;text-shadow:none !important}a[href]:after{content:" (" attr(href) ")";font-size:90%}a[href][title]:after{content:none}abbr[title]:after{content:" (" attr(title) ")"}.ir a:after,a[href^="javascript:"]:after,a[href^="#"]:after{content:""}pre,blockquote{border:1px solid #999;page-break-inside:avoid}thead{display:table-header-group}tr,img{page-break-inside:avoid}img{max-width:100% !important}@page{margin:0.5cm}p,h2,h3{orphans:3;widows:3}h1,h2,h3,h4,h5,h6{page-break-after:avoid}}</style>
+<script async src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/latest.js?config=TeX-AMS_CHTML" integrity="sha256-kZafAc6mZvK3W3v1pHOcUix30OHQN6pU/NO2oFkqZVw=" crossorigin></script>
+<script defer src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/10.1.1/highlight.min.js" integrity="sha256-Uv3H6lx7dJmRfRvH8TH6kJD1TSK1aFcwgx+mdg3epi8=" crossorigin></script>
+<script>window.addEventListener('DOMContentLoaded', () => hljs.initHighlighting())</script>
+</head>
+<body>
+<main>
+<article id="content">
+<header>
+<h1 class="title">Module <code>lum.clu.odin.serialization</code></h1>
+</header>
+<section id="section-intro">
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">from lum.clu.odin.mention import (Mention, TextBoundMention, RelationMention, EventMention, CrossSentenceMention)
+from lum.clu.processors.document import Document
+from lum.clu.processors.interval import Interval
+import typing
+import collections
+
+__all__ = [&#34;OdinJsonSerializer&#34;]
+
+
+
+    # (&#34;type&#34; -&gt; longString) ~
+    # // used for correspondence with paths map
+    # (&#34;id&#34; -&gt; id) ~ // tb.id would just create a different TextBoundMentionOps to provide the id
+    # (&#34;text&#34; -&gt; tb.text) ~
+    # (&#34;labels&#34; -&gt; tb.labels) ~
+    # (&#34;tokenInterval&#34; -&gt; Map(&#34;start&#34; -&gt; tb.tokenInterval.start, &#34;end&#34; -&gt; tb.tokenInterval.end)) ~
+    # (&#34;characterStartOffset&#34; -&gt; tb.startOffset) ~
+    # (&#34;characterEndOffset&#34; -&gt; tb.endOffset) ~
+    # (&#34;sentence&#34; -&gt; tb.sentence) ~
+    # (&#34;document&#34; -&gt; documentEquivalenceHash.toString) ~
+    # (&#34;keep&#34; -&gt; tb.keep) ~
+    # (&#34;foundBy&#34; -&gt; tb.foundBy)
+
+# object TextBoundMentionOps {
+#   val string = &#34;TextBoundMention&#34;
+#   val shortString = &#34;T&#34;
+# }
+
+# object EventMentionOps {
+#   val string = &#34;EventMention&#34;
+#   val shortString = &#34;E&#34;
+# }
+
+# object RelationMentionOps {
+#   val string = &#34;RelationMention&#34;
+#   val shortString = &#34;R&#34;
+# }
+
+# object CrossSentenceMentionOps {
+#   val string = &#34;CrossSentenceMention&#34;
+#   val shortString = &#34;CS&#34;
+# }
+
+class OdinJsonSerializer:
+
+  MENTION_TB_TYPE = &#34;TextBoundMention&#34;
+  MENTION_R_TYPE = &#34;RelationMention&#34;
+  MENTION_E_TYPE = &#34;EventMention&#34;
+  MENTION_C_TYPE = &#34;CrossSentenceMention&#34;
+
+  # @staticmethod
+  # def to_compact_mentions_json(jdata: dict[str, typing.Any]) -&gt; list[Mention]:
+  #   pass
+
+  # don&#39;t blow the stack
+  @staticmethod
+  def from_compact_mentions_json(compact_json: dict[str, typing.Any]) -&gt; list[Mention]:
+
+    # populate mapping of doc id -&gt; Document
+    docs_map = dict()
+    for doc_id, doc_json in compact_json[&#34;documents&#34;].items():
+      # store ID if not set
+      if &#34;id&#34; not in doc_json:
+        doc_json.update({&#34;id&#34;: doc_id})
+      docs_map[doc_id] = Document(**doc_json)
+
+    mentions_map: dict[str, Mention] = dict()
+    mention_ids: typing.Set[str] = {mn.get(&#34;id&#34;) for mn in compact_json[&#34;mentions&#34;]}
+    # attack TBMs first
+    srt_fn = lambda mid: -1 if mid.startswith(&#34;T&#34;) else 1
+    # make a queue w/ TBMs first
+    missing: collections.deque = collections.deque(sorted(list(mention_ids), key=srt_fn))
+
+    while len(missing) &gt; 0:
+      m_id = missing.popleft()
+      # pop a key and try to create the mention map
+      _, mns_map = OdinJsonSerializer._fetch_mention(
+        m_id=m_id, 
+        compact_json=compact_json, 
+        docs_map=docs_map,
+        mentions_map=mentions_map
+      )
+      # store new results
+      mentions_map.update(mns_map)
+      # filter out newly constructed mentions
+      missing = collections.deque([k for k in missing if k not in mentions_map])
+    #return list(mentions_map.values())
+    # avoids unraveling mentions to include triggers, etc.
+    return [m for mid, m in mentions_map.items() if mid in mention_ids]
+
+  @staticmethod
+  def _fetch_mention(m_id: str, compact_json: dict[str, typing.Any], docs_map: dict[str, Document], mentions_map: dict[str, Mention]) -&gt; typing.Tuple[Mention, dict[str, Mention]]:
+    # base case
+    if m_id in mentions_map:
+      return mentions_map[m_id], mentions_map
+     
+    mjson: dict[str, typing.Any] = [mn for mn in compact_json[&#34;mentions&#34;] if mn.get(&#34;id&#34;, None)== m_id][0]
+    mtype = mjson[&#34;type&#34;]
+    # gather general info
+    labels = mjson[&#34;labels&#34;]
+    token_interval = Interval(**mjson[&#34;tokenInterval&#34;])
+    document = docs_map[mjson[&#34;document&#34;]]
+    start = mjson[&#34;characterStartOffset&#34;]
+    end = mjson[&#34;characterEndOffset&#34;]
+    sentence_index = mjson[&#34;sentence&#34;]
+    found_by = mjson[&#34;foundBy&#34;]
+    keep = mjson.get(&#34;keep&#34;, True)
+    # easy case. We have everything we need.
+    if mtype == OdinJsonSerializer.MENTION_TB_TYPE:
+      m = TextBoundMention(
+        labels=labels,
+        token_interval=token_interval,
+        sentence_index=sentence_index,
+        start=start,
+        end=end,
+        document=document,
+        found_by=found_by,
+        keep=keep
+      )
+      mentions_map[m_id] = m
+      return (m, mentions_map)
+    # everything else *might* have paths
+    paths: typing.Optional[Mention.Paths] = OdinJsonSerializer.construct_paths(mjson.get(&#34;paths&#34;, None))
+    # retrieve all args recursively
+    arguments: Mention.Arguments = dict()
+    for role, mns_json in mjson.get(&#34;arguments&#34;, {}).items():
+        role_mns = arguments.get(role, [])
+        for mn_json in mns_json:
+          _mid = mn_json[&#34;id&#34;]
+          if _mid in mentions_map:
+            _mn = mentions_map[_mid]
+          else:
+            # NOTE: in certain cases, the referenced mid might not be found in the compact_json.
+            # we&#39;ll add it to be safe.
+            if all(m[&#34;id&#34;] != _mid for m in compact_json[&#34;mentions&#34;]):
+               compact_json[&#34;mentions&#34;] = compact_json[&#34;mentions&#34;] + [mn_json]
+            _mn, _mns_map = OdinJsonSerializer._fetch_mention(
+              m_id=_mid, 
+              compact_json=compact_json, 
+              docs_map=docs_map, mentions_map=mentions_map
+            )
+            # update our progress
+            mentions_map.update(_mns_map)
+          # store this guy
+          role_mns.append(_mn)
+        # update our args
+        arguments[role] = role_mns
+          
+    if mtype == OdinJsonSerializer.MENTION_E_TYPE:
+        # get or load trigger
+        trigger_mjson = mjson[&#34;trigger&#34;]
+        trigger_id = trigger_mjson[&#34;id&#34;]
+        if trigger_id in mentions_map:
+          trigger = mentions_map[trigger_id]
+        # avoid a recursive call 
+        # for the sake of the stack...
+        else:
+          trigger = TextBoundMention(
+            labels=trigger_mjson[&#34;labels&#34;],
+            token_interval=Interval(**trigger_mjson[&#34;tokenInterval&#34;]),
+            sentence_index=trigger_mjson[&#34;sentence&#34;],
+            start=trigger_mjson[&#34;characterStartOffset&#34;],
+            end=trigger_mjson[&#34;characterEndOffset&#34;],
+            document=docs_map[trigger_mjson[&#34;document&#34;]],
+            found_by=trigger_mjson[&#34;foundBy&#34;],
+            keep=trigger_mjson.get(&#34;keep&#34;, False)
+          )
+        # we have what we need
+        m = EventMention(
+          labels=labels,
+          token_interval=token_interval,
+          trigger=trigger,
+          sentence_index=sentence_index,
+          start=start,
+          end=end,
+          document=document,
+          arguments=arguments,
+          paths=paths,
+          found_by=found_by,
+          keep=keep
+        )
+        mentions_map[m_id] = m
+        return (m, mentions_map)
+    if mtype == OdinJsonSerializer.MENTION_R_TYPE:
+        # we have what we need
+        m = RelationMention(
+          labels=labels,
+          token_interval=token_interval,
+          sentence_index=sentence_index,
+          start=start,
+          end=end,
+          document=document,
+          arguments=arguments,
+          paths=paths,
+          found_by=found_by,
+          keep=keep
+        )
+        mentions_map[m_id] = m
+        return (m, mentions_map)
+    if mtype == OdinJsonSerializer.MENTION_C_TYPE:
+        # anchor
+        # this will be one of our args (see https://github.com/clulab/processors/blob/9f89ea7bf6ac551f77dbfdbb8eec9bf216711df4/main/src/main/scala/org/clulab/odin/Mention.scala#L535), so we&#39;ll be lazy
+        anchor: Mention = mentions_map[mjson[&#34;anchor&#34;][&#34;id&#34;]]
+        # neighbor
+        # this will be one of our args (see https://github.com/clulab/processors/blob/9f89ea7bf6ac551f77dbfdbb8eec9bf216711df4/main/src/main/scala/org/clulab/odin/Mention.scala#L535), so we&#39;ll be lazy
+        neighbor: Mention = mentions_map[mjson[&#34;neighbor&#34;][&#34;id&#34;]]
+        # we have what we need
+        m = CrossSentenceMention(
+          labels=labels,
+          token_interval=token_interval,
+          anchor=anchor,
+          neighbor=neighbor,
+          # corresponds to anchor.sentence_inde
+          sentence_index=sentence_index,
+          start=start,
+          end=end,
+          document=document,
+          arguments=arguments,
+          paths=None,
+          found_by=found_by,
+          keep=keep
+        )
+        mentions_map[m_id] = m
+        return (m, mentions_map)
+    else:
+       raise Exception(f&#34;Unrecognized mention type {mtype}. Expected one of the following {OdinJsonSerializer.MENTION_TB_TYPE}, {OdinJsonSerializer.MENTION_E_TYPE}, {OdinJsonSerializer.MENTION_R_TYPE}, {OdinJsonSerializer.MENTION_C_TYPE}&#34;)
+    
+  @staticmethod
+  def construct_paths(maybe_path_data: typing.Optional[dict[str, typing.Any]]) -&gt; typing.Optional[Mention.Paths]:
+     # FIXME: implement me
+     return None
+     
+  @staticmethod
+  def _load_mention_from_compact_JSON(mention_id: str, compact_json: dict[str, typing.Any], docs_dict: dict[str, Document], mentions_dict: dict[str, Mention]):
+      mjson = compact_json[&#34;mentions&#34;][mention_id]
+      # recover document
+      document = docs_dict[mjson[&#34;document&#34;]]
+      # TODO: load args
+
+      # collect components
+      mtype = mjson[&#34;type&#34;]
+      labels = mjson[&#34;labels&#34;]
+      token_interval = Interval(**mjson[&#34;tokenInterval&#34;])
+      if mtype == OdinJsonSerializer.MENTION_TB_TYPE:
+         raise NotImplementedError
+      elif mtype == OdinJsonSerializer.MENTION_E_TYPE:
+         # get or load trigger
+         raise NotImplementedError
+      elif mtype == OdinJsonSerializer.MENTION_R_TYPE:
+         raise NotImplementedError
+      elif mtype == OdinJsonSerializer.MENTION_C_TYPE:
+         raise NotImplementedError
+         
+      kwargs = {
+          &#34;label&#34;: mjson.get(&#34;label&#34;, labels[0]),
+          &#34;labels&#34;: labels,
+          &#34;token_interval&#34;: Interval.load_from_JSON(mjson[&#34;tokenInterval&#34;]),
+          &#34;sentence&#34;: mjson[&#34;sentence&#34;],
+          &#34;document&#34;: doc,
+          &#34;doc_id&#34;: doc_id,
+          &#34;trigger&#34;: mjson.get(&#34;trigger&#34;, None),
+          &#34;arguments&#34;: mjson.get(&#34;arguments&#34;, None),
+          &#34;paths&#34;: mjson.get(&#34;paths&#34;, None),
+          &#34;keep&#34;: mjson.get(&#34;keep&#34;, True),
+          &#34;foundBy&#34;: mjson[&#34;foundBy&#34;]
+      }
+      m = Mention(**kwargs)
+      # set IDs
+      m.id = mjson[&#34;id&#34;]
+      m._doc_id = doc_id
+      # set character offsets
+      m.character_start_offset = mjson[&#34;characterStartOffset&#34;]
+      m.character_end_offset = mjson[&#34;characterEndOffset&#34;]
+      return m
+
+  # def to_JSON_dict(self):
+  #     m = dict()
+  #     m[&#34;id&#34;] = self.id
+  #     m[&#34;type&#34;] = self.type
+  #     m[&#34;label&#34;] = self.label
+  #     m[&#34;labels&#34;] = self.labels
+  #     m[&#34;tokenInterval&#34;] = self.tokenInterval.to_JSON_dict()
+  #     m[&#34;characterStartOffset&#34;] = self.characterStartOffset
+  #     m[&#34;characterEndOffset&#34;] = self.characterEndOffset
+  #     m[&#34;sentence&#34;] = self.sentence
+  #     m[&#34;document&#34;] = self._doc_id
+  #     # do we have a trigger?
+  #     if self.trigger:
+  #          m[&#34;trigger&#34;] = self.trigger.to_JSON_dict()
+  #     # do we have arguments?
+  #     if self.arguments:
+  #         m[&#34;arguments&#34;] = self._arguments_to_JSON_dict()
+  #     # handle paths
+  #     if self.paths:
+  #         m[&#34;paths&#34;] = self.paths
+  #     m[&#34;keep&#34;] = self.keep
+  #     m[&#34;foundBy&#34;] = self.foundBy
+  #     return m</code></pre>
+</details>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+</section>
+<section>
+<h2 class="section-title" id="header-classes">Classes</h2>
+<dl>
+<dt id="lum.clu.odin.serialization.OdinJsonSerializer"><code class="flex name class">
+<span>class <span class="ident">OdinJsonSerializer</span></span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">class OdinJsonSerializer:
+
+  MENTION_TB_TYPE = &#34;TextBoundMention&#34;
+  MENTION_R_TYPE = &#34;RelationMention&#34;
+  MENTION_E_TYPE = &#34;EventMention&#34;
+  MENTION_C_TYPE = &#34;CrossSentenceMention&#34;
+
+  # @staticmethod
+  # def to_compact_mentions_json(jdata: dict[str, typing.Any]) -&gt; list[Mention]:
+  #   pass
+
+  # don&#39;t blow the stack
+  @staticmethod
+  def from_compact_mentions_json(compact_json: dict[str, typing.Any]) -&gt; list[Mention]:
+
+    # populate mapping of doc id -&gt; Document
+    docs_map = dict()
+    for doc_id, doc_json in compact_json[&#34;documents&#34;].items():
+      # store ID if not set
+      if &#34;id&#34; not in doc_json:
+        doc_json.update({&#34;id&#34;: doc_id})
+      docs_map[doc_id] = Document(**doc_json)
+
+    mentions_map: dict[str, Mention] = dict()
+    mention_ids: typing.Set[str] = {mn.get(&#34;id&#34;) for mn in compact_json[&#34;mentions&#34;]}
+    # attack TBMs first
+    srt_fn = lambda mid: -1 if mid.startswith(&#34;T&#34;) else 1
+    # make a queue w/ TBMs first
+    missing: collections.deque = collections.deque(sorted(list(mention_ids), key=srt_fn))
+
+    while len(missing) &gt; 0:
+      m_id = missing.popleft()
+      # pop a key and try to create the mention map
+      _, mns_map = OdinJsonSerializer._fetch_mention(
+        m_id=m_id, 
+        compact_json=compact_json, 
+        docs_map=docs_map,
+        mentions_map=mentions_map
+      )
+      # store new results
+      mentions_map.update(mns_map)
+      # filter out newly constructed mentions
+      missing = collections.deque([k for k in missing if k not in mentions_map])
+    #return list(mentions_map.values())
+    # avoids unraveling mentions to include triggers, etc.
+    return [m for mid, m in mentions_map.items() if mid in mention_ids]
+
+  @staticmethod
+  def _fetch_mention(m_id: str, compact_json: dict[str, typing.Any], docs_map: dict[str, Document], mentions_map: dict[str, Mention]) -&gt; typing.Tuple[Mention, dict[str, Mention]]:
+    # base case
+    if m_id in mentions_map:
+      return mentions_map[m_id], mentions_map
+     
+    mjson: dict[str, typing.Any] = [mn for mn in compact_json[&#34;mentions&#34;] if mn.get(&#34;id&#34;, None)== m_id][0]
+    mtype = mjson[&#34;type&#34;]
+    # gather general info
+    labels = mjson[&#34;labels&#34;]
+    token_interval = Interval(**mjson[&#34;tokenInterval&#34;])
+    document = docs_map[mjson[&#34;document&#34;]]
+    start = mjson[&#34;characterStartOffset&#34;]
+    end = mjson[&#34;characterEndOffset&#34;]
+    sentence_index = mjson[&#34;sentence&#34;]
+    found_by = mjson[&#34;foundBy&#34;]
+    keep = mjson.get(&#34;keep&#34;, True)
+    # easy case. We have everything we need.
+    if mtype == OdinJsonSerializer.MENTION_TB_TYPE:
+      m = TextBoundMention(
+        labels=labels,
+        token_interval=token_interval,
+        sentence_index=sentence_index,
+        start=start,
+        end=end,
+        document=document,
+        found_by=found_by,
+        keep=keep
+      )
+      mentions_map[m_id] = m
+      return (m, mentions_map)
+    # everything else *might* have paths
+    paths: typing.Optional[Mention.Paths] = OdinJsonSerializer.construct_paths(mjson.get(&#34;paths&#34;, None))
+    # retrieve all args recursively
+    arguments: Mention.Arguments = dict()
+    for role, mns_json in mjson.get(&#34;arguments&#34;, {}).items():
+        role_mns = arguments.get(role, [])
+        for mn_json in mns_json:
+          _mid = mn_json[&#34;id&#34;]
+          if _mid in mentions_map:
+            _mn = mentions_map[_mid]
+          else:
+            # NOTE: in certain cases, the referenced mid might not be found in the compact_json.
+            # we&#39;ll add it to be safe.
+            if all(m[&#34;id&#34;] != _mid for m in compact_json[&#34;mentions&#34;]):
+               compact_json[&#34;mentions&#34;] = compact_json[&#34;mentions&#34;] + [mn_json]
+            _mn, _mns_map = OdinJsonSerializer._fetch_mention(
+              m_id=_mid, 
+              compact_json=compact_json, 
+              docs_map=docs_map, mentions_map=mentions_map
+            )
+            # update our progress
+            mentions_map.update(_mns_map)
+          # store this guy
+          role_mns.append(_mn)
+        # update our args
+        arguments[role] = role_mns
+          
+    if mtype == OdinJsonSerializer.MENTION_E_TYPE:
+        # get or load trigger
+        trigger_mjson = mjson[&#34;trigger&#34;]
+        trigger_id = trigger_mjson[&#34;id&#34;]
+        if trigger_id in mentions_map:
+          trigger = mentions_map[trigger_id]
+        # avoid a recursive call 
+        # for the sake of the stack...
+        else:
+          trigger = TextBoundMention(
+            labels=trigger_mjson[&#34;labels&#34;],
+            token_interval=Interval(**trigger_mjson[&#34;tokenInterval&#34;]),
+            sentence_index=trigger_mjson[&#34;sentence&#34;],
+            start=trigger_mjson[&#34;characterStartOffset&#34;],
+            end=trigger_mjson[&#34;characterEndOffset&#34;],
+            document=docs_map[trigger_mjson[&#34;document&#34;]],
+            found_by=trigger_mjson[&#34;foundBy&#34;],
+            keep=trigger_mjson.get(&#34;keep&#34;, False)
+          )
+        # we have what we need
+        m = EventMention(
+          labels=labels,
+          token_interval=token_interval,
+          trigger=trigger,
+          sentence_index=sentence_index,
+          start=start,
+          end=end,
+          document=document,
+          arguments=arguments,
+          paths=paths,
+          found_by=found_by,
+          keep=keep
+        )
+        mentions_map[m_id] = m
+        return (m, mentions_map)
+    if mtype == OdinJsonSerializer.MENTION_R_TYPE:
+        # we have what we need
+        m = RelationMention(
+          labels=labels,
+          token_interval=token_interval,
+          sentence_index=sentence_index,
+          start=start,
+          end=end,
+          document=document,
+          arguments=arguments,
+          paths=paths,
+          found_by=found_by,
+          keep=keep
+        )
+        mentions_map[m_id] = m
+        return (m, mentions_map)
+    if mtype == OdinJsonSerializer.MENTION_C_TYPE:
+        # anchor
+        # this will be one of our args (see https://github.com/clulab/processors/blob/9f89ea7bf6ac551f77dbfdbb8eec9bf216711df4/main/src/main/scala/org/clulab/odin/Mention.scala#L535), so we&#39;ll be lazy
+        anchor: Mention = mentions_map[mjson[&#34;anchor&#34;][&#34;id&#34;]]
+        # neighbor
+        # this will be one of our args (see https://github.com/clulab/processors/blob/9f89ea7bf6ac551f77dbfdbb8eec9bf216711df4/main/src/main/scala/org/clulab/odin/Mention.scala#L535), so we&#39;ll be lazy
+        neighbor: Mention = mentions_map[mjson[&#34;neighbor&#34;][&#34;id&#34;]]
+        # we have what we need
+        m = CrossSentenceMention(
+          labels=labels,
+          token_interval=token_interval,
+          anchor=anchor,
+          neighbor=neighbor,
+          # corresponds to anchor.sentence_inde
+          sentence_index=sentence_index,
+          start=start,
+          end=end,
+          document=document,
+          arguments=arguments,
+          paths=None,
+          found_by=found_by,
+          keep=keep
+        )
+        mentions_map[m_id] = m
+        return (m, mentions_map)
+    else:
+       raise Exception(f&#34;Unrecognized mention type {mtype}. Expected one of the following {OdinJsonSerializer.MENTION_TB_TYPE}, {OdinJsonSerializer.MENTION_E_TYPE}, {OdinJsonSerializer.MENTION_R_TYPE}, {OdinJsonSerializer.MENTION_C_TYPE}&#34;)
+    
+  @staticmethod
+  def construct_paths(maybe_path_data: typing.Optional[dict[str, typing.Any]]) -&gt; typing.Optional[Mention.Paths]:
+     # FIXME: implement me
+     return None
+     
+  @staticmethod
+  def _load_mention_from_compact_JSON(mention_id: str, compact_json: dict[str, typing.Any], docs_dict: dict[str, Document], mentions_dict: dict[str, Mention]):
+      mjson = compact_json[&#34;mentions&#34;][mention_id]
+      # recover document
+      document = docs_dict[mjson[&#34;document&#34;]]
+      # TODO: load args
+
+      # collect components
+      mtype = mjson[&#34;type&#34;]
+      labels = mjson[&#34;labels&#34;]
+      token_interval = Interval(**mjson[&#34;tokenInterval&#34;])
+      if mtype == OdinJsonSerializer.MENTION_TB_TYPE:
+         raise NotImplementedError
+      elif mtype == OdinJsonSerializer.MENTION_E_TYPE:
+         # get or load trigger
+         raise NotImplementedError
+      elif mtype == OdinJsonSerializer.MENTION_R_TYPE:
+         raise NotImplementedError
+      elif mtype == OdinJsonSerializer.MENTION_C_TYPE:
+         raise NotImplementedError
+         
+      kwargs = {
+          &#34;label&#34;: mjson.get(&#34;label&#34;, labels[0]),
+          &#34;labels&#34;: labels,
+          &#34;token_interval&#34;: Interval.load_from_JSON(mjson[&#34;tokenInterval&#34;]),
+          &#34;sentence&#34;: mjson[&#34;sentence&#34;],
+          &#34;document&#34;: doc,
+          &#34;doc_id&#34;: doc_id,
+          &#34;trigger&#34;: mjson.get(&#34;trigger&#34;, None),
+          &#34;arguments&#34;: mjson.get(&#34;arguments&#34;, None),
+          &#34;paths&#34;: mjson.get(&#34;paths&#34;, None),
+          &#34;keep&#34;: mjson.get(&#34;keep&#34;, True),
+          &#34;foundBy&#34;: mjson[&#34;foundBy&#34;]
+      }
+      m = Mention(**kwargs)
+      # set IDs
+      m.id = mjson[&#34;id&#34;]
+      m._doc_id = doc_id
+      # set character offsets
+      m.character_start_offset = mjson[&#34;characterStartOffset&#34;]
+      m.character_end_offset = mjson[&#34;characterEndOffset&#34;]
+      return m
+
+  # def to_JSON_dict(self):
+  #     m = dict()
+  #     m[&#34;id&#34;] = self.id
+  #     m[&#34;type&#34;] = self.type
+  #     m[&#34;label&#34;] = self.label
+  #     m[&#34;labels&#34;] = self.labels
+  #     m[&#34;tokenInterval&#34;] = self.tokenInterval.to_JSON_dict()
+  #     m[&#34;characterStartOffset&#34;] = self.characterStartOffset
+  #     m[&#34;characterEndOffset&#34;] = self.characterEndOffset
+  #     m[&#34;sentence&#34;] = self.sentence
+  #     m[&#34;document&#34;] = self._doc_id
+  #     # do we have a trigger?
+  #     if self.trigger:
+  #          m[&#34;trigger&#34;] = self.trigger.to_JSON_dict()
+  #     # do we have arguments?
+  #     if self.arguments:
+  #         m[&#34;arguments&#34;] = self._arguments_to_JSON_dict()
+  #     # handle paths
+  #     if self.paths:
+  #         m[&#34;paths&#34;] = self.paths
+  #     m[&#34;keep&#34;] = self.keep
+  #     m[&#34;foundBy&#34;] = self.foundBy
+  #     return m</code></pre>
+</details>
+<h3>Class variables</h3>
+<dl>
+<dt id="lum.clu.odin.serialization.OdinJsonSerializer.MENTION_C_TYPE"><code class="name">var <span class="ident">MENTION_C_TYPE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="lum.clu.odin.serialization.OdinJsonSerializer.MENTION_E_TYPE"><code class="name">var <span class="ident">MENTION_E_TYPE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="lum.clu.odin.serialization.OdinJsonSerializer.MENTION_R_TYPE"><code class="name">var <span class="ident">MENTION_R_TYPE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+<dt id="lum.clu.odin.serialization.OdinJsonSerializer.MENTION_TB_TYPE"><code class="name">var <span class="ident">MENTION_TB_TYPE</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="lum.clu.odin.serialization.OdinJsonSerializer.construct_paths"><code class="name flex">
+<span>def <span class="ident">construct_paths</span></span>(<span>maybe_path_data: Optional[dict[str, typing.Any]]) ‑> Optional[dict[str, dict[<a title="lum.clu.odin.mention.Mention" href="mention.html#lum.clu.odin.mention.Mention">Mention</a>, <a title="lum.clu.odin.synpath.SynPath" href="synpath.html#lum.clu.odin.synpath.SynPath">SynPath</a>]]]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def construct_paths(maybe_path_data: typing.Optional[dict[str, typing.Any]]) -&gt; typing.Optional[Mention.Paths]:
+   # FIXME: implement me
+   return None</code></pre>
+</details>
+</dd>
+<dt id="lum.clu.odin.serialization.OdinJsonSerializer.from_compact_mentions_json"><code class="name flex">
+<span>def <span class="ident">from_compact_mentions_json</span></span>(<span>compact_json: dict[str, typing.Any]) ‑> list[<a title="lum.clu.odin.mention.Mention" href="mention.html#lum.clu.odin.mention.Mention">Mention</a>]</span>
+</code></dt>
+<dd>
+<div class="desc"></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def from_compact_mentions_json(compact_json: dict[str, typing.Any]) -&gt; list[Mention]:
+
+  # populate mapping of doc id -&gt; Document
+  docs_map = dict()
+  for doc_id, doc_json in compact_json[&#34;documents&#34;].items():
+    # store ID if not set
+    if &#34;id&#34; not in doc_json:
+      doc_json.update({&#34;id&#34;: doc_id})
+    docs_map[doc_id] = Document(**doc_json)
+
+  mentions_map: dict[str, Mention] = dict()
+  mention_ids: typing.Set[str] = {mn.get(&#34;id&#34;) for mn in compact_json[&#34;mentions&#34;]}
+  # attack TBMs first
+  srt_fn = lambda mid: -1 if mid.startswith(&#34;T&#34;) else 1
+  # make a queue w/ TBMs first
+  missing: collections.deque = collections.deque(sorted(list(mention_ids), key=srt_fn))
+
+  while len(missing) &gt; 0:
+    m_id = missing.popleft()
+    # pop a key and try to create the mention map
+    _, mns_map = OdinJsonSerializer._fetch_mention(
+      m_id=m_id, 
+      compact_json=compact_json, 
+      docs_map=docs_map,
+      mentions_map=mentions_map
+    )
+    # store new results
+    mentions_map.update(mns_map)
+    # filter out newly constructed mentions
+    missing = collections.deque([k for k in missing if k not in mentions_map])
+  #return list(mentions_map.values())
+  # avoids unraveling mentions to include triggers, etc.
+  return [m for mid, m in mentions_map.items() if mid in mention_ids]</code></pre>
+</details>
+</dd>
+</dl>
+</dd>
+</dl>
+</section>
+</article>
+<nav id="sidebar">
+<h1>Index</h1>
+<div class="toc">
+<ul></ul>
+</div>
+<ul id="index">
+<li><h3>Super-module</h3>
+<ul>
+<li><code><a title="lum.clu.odin" href="index.html">lum.clu.odin</a></code></li>
+</ul>
+</li>
+<li><h3><a href="#header-classes">Classes</a></h3>
+<ul>
+<li>
+<h4><code><a title="lum.clu.odin.serialization.OdinJsonSerializer" href="#lum.clu.odin.serialization.OdinJsonSerializer">OdinJsonSerializer</a></code></h4>
+<ul class="">
+<li><code><a title="lum.clu.odin.serialization.OdinJsonSerializer.MENTION_C_TYPE" href="#lum.clu.odin.serialization.OdinJsonSerializer.MENTION_C_TYPE">MENTION_C_TYPE</a></code></li>
+<li><code><a title="lum.clu.odin.serialization.OdinJsonSerializer.MENTION_E_TYPE" href="#lum.clu.odin.serialization.OdinJsonSerializer.MENTION_E_TYPE">MENTION_E_TYPE</a></code></li>
+<li><code><a title="lum.clu.odin.serialization.OdinJsonSerializer.MENTION_R_TYPE" href="#lum.clu.odin.serialization.OdinJsonSerializer.MENTION_R_TYPE">MENTION_R_TYPE</a></code></li>
+<li><code><a title="lum.clu.odin.serialization.OdinJsonSerializer.MENTION_TB_TYPE" href="#lum.clu.odin.serialization.OdinJsonSerializer.MENTION_TB_TYPE">MENTION_TB_TYPE</a></code></li>
+<li><code><a title="lum.clu.odin.serialization.OdinJsonSerializer.construct_paths" href="#lum.clu.odin.serialization.OdinJsonSerializer.construct_paths">construct_paths</a></code></li>
+<li><code><a title="lum.clu.odin.serialization.OdinJsonSerializer.from_compact_mentions_json" href="#lum.clu.odin.serialization.OdinJsonSerializer.from_compact_mentions_json">from_compact_mentions_json</a></code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</nav>
+</main>
+<footer id="footer">
+<p>Generated by <a href="https://pdoc3.github.io/pdoc" title="pdoc: Python API documentation generator"><cite>pdoc</cite> 0.10.0</a>.</p>
+</footer>
+</body>
+</html>
