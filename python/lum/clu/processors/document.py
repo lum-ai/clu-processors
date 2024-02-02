@@ -26,8 +26,6 @@ class Document(BaseModel):
       sentences = []
       offset = 0
       for doc in docs:
-          if doc.text:
-              text += doc.text
           for old in doc.sentences:
               s = Sentence(
                   text = old.text,
@@ -42,10 +40,11 @@ class Document(BaseModel):
                   entities = old.entities,
                   graphs = old.graphs
               )
-              # TODO: add tests
-              if doc.text:
-                offset += len(doc.text)
               sentences.append(s)
+          if doc.text:
+              text += doc.text
+              offset += len(doc.text)
+
       return Document(
           id = docs[0].id,
           text=text if len(text) > 0 else None,
