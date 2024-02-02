@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 from __future__ import annotations
-from pydantic import BaseModel, Field
+from pydantic import BaseModel, Field, override
 from lum.clu.processors.document import Document
 from lum.clu.processors.sentence import Sentence
 from lum.clu.processors.interval import Interval
@@ -36,6 +36,7 @@ class Mention(BaseModel):
   # alias="foundBy"
   found_by: str = Field(default="unknown", description="The name of the rule that produced this mention")
 
+  #@override
   def copy(
     self,
     maybe_labels: typing.Optional[list[str]] = None,
@@ -535,7 +536,7 @@ class EventMention(Mention):
   arguments: Mention.Arguments = Field(default={}, description="A mapping of the EventMention's arguments (role -> list[Mention])")
   paths: typing.Optional[Mention.Paths] = Field(default={}, description="Graph traversal leading to each argument")
 
-
+  #@override
   def copy(
     self,
     maybe_trigger: typing.Optional[TextBoundMention] = None,

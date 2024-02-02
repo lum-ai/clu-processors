@@ -1,3 +1,4 @@
+from __future__ import annotations
 from pydantic import BaseModel, Field, ConfigDict
 from lum.clu.processors.sentence import Sentence
 from lum.clu.processors.utils import Labels
@@ -17,6 +18,39 @@ class Document(BaseModel):
     text: typing.Optional[str] = Field(default=None, description=" The text of the `Document`.")
 
     sentences: list[Sentence] = Field(description="The sentences comprising the `Document`.")
+
+    @staticmethod
+    def merge_documents(docs: list[Document]) -> Document:
+      """Merges two or more Documents into a single Document."""
+      text = ""
+      sentences = []
+      offset = 0
+      for doc in docs:
+          if doc.text:
+              text += doc.text
+          for old in doc.sentences:
+              s = Sentence(
+                  text = old.text,
+                  raw = old.raw,
+                  words = old.words,
+                  startOffsets = [i + offset for i in old.start_offsets],
+                  endOffsets = [i + offset for i in old.end_offsets],
+                  tags= old.tags,
+                  lemmas = old.lemmas,
+                  norms = old.norms,
+                  chunks = old.chunks,
+                  entities = old.entities,
+                  graphs = old.graphs
+              )
+              # TODO: add tests
+              if doc.text:
+                offset += len(doc.text)
+              sentences.append(s)
+      return Document(
+          id = docs[0].id,
+          text=text if len(text) > 0 else None,
+          sentences=sentences
+      )
 
     # size : int
     #     The number of `sentences`.

@@ -1,5 +1,5 @@
 from __future__ import annotations
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 from lum.clu.processors.directed_graph import DirectedGraph
 from lum.clu.processors.utils import Labels
 import typing
@@ -15,7 +15,10 @@ class Sentence(BaseModel):
     """
     Storage class for an annotated sentence. Based on [`org.clulab.processors.Sentence`](https://github.com/clulab/processors/blob/master/main/src/main/scala/org/clulab/processors/Sentence.scala)
     """
-    text: typing.Optional[str] = Field(default=None, description=" The text of the `Sentence`.")
+
+    model_config = ConfigDict(populate_by_name=True)
+
+    text: typing.Optional[str] = Field(default=None, description=" The text of the `Sentence`.", exclude=True)
 
     raw: list[str] = Field(description="Raw tokens in this sentence; these are expected to match the original text")
     
@@ -36,7 +39,7 @@ class Sentence(BaseModel):
     entities: typing.Optional[list[str]] = Field(default=None, description="A list of the `Sentence`'s tokens represented using IOB-style named entity (NE) labels.")
 
     graphs: dict[str, DirectedGraph] = Field(description="A dictionary (str -> `lum.clu.processors.doc.DirectedGraph`) mapping the graph type/name to a `lum.clu.processors.doc.DirectedGraph`.")
-
+    
     @model_validator(mode="before")
     @classmethod
     def raw_or_words(cls, data: typing.Any) -> typing.Any:
