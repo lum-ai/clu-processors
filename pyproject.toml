@@ -62,6 +62,7 @@ minversion = "7.0"
 addopts = "-v --cov=lum.clu --cov-report html:docs/coverage"
 testpaths = [
     "python/tests",
+    "python/lum/clu/processors/tests",
     "python/lum/clu/odin/tests"
 ]
 

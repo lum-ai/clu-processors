@@ -535,7 +535,6 @@ class EventMention(Mention):
   arguments: Mention.Arguments = Field(default={}, description="A mapping of the EventMention's arguments (role -> list[Mention])")
   paths: typing.Optional[Mention.Paths] = Field(default={}, description="Graph traversal leading to each argument")
 
-
   def copy(
     self,
     maybe_trigger: typing.Optional[TextBoundMention] = None,
