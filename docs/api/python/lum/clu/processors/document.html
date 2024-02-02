@@ -27,7 +27,8 @@
 <summary>
 <span>Expand source code</span>
 </summary>
-<pre><code class="python">from pydantic import BaseModel, Field, ConfigDict
+<pre><code class="python">from __future__ import annotations
+from pydantic import BaseModel, Field, ConfigDict
 from lum.clu.processors.sentence import Sentence
 from lum.clu.processors.utils import Labels
 import typing
@@ -46,6 +47,38 @@ class Document(BaseModel):
     text: typing.Optional[str] = Field(default=None, description=&#34; The text of the `Document`.&#34;)
 
     sentences: list[Sentence] = Field(description=&#34;The sentences comprising the `Document`.&#34;)
+
+    @staticmethod
+    def merge_documents(docs: list[Document]) -&gt; Document:
+      &#34;&#34;&#34;Merges two or more Documents into a single Document.&#34;&#34;&#34;
+      text = &#34;&#34;
+      sentences = []
+      offset = 0
+      for doc in docs:
+          for old in doc.sentences:
+              s = Sentence(
+                  text = old.text,
+                  raw = old.raw,
+                  words = old.words,
+                  startOffsets = [i + offset for i in old.start_offsets],
+                  endOffsets = [i + offset for i in old.end_offsets],
+                  tags= old.tags,
+                  lemmas = old.lemmas,
+                  norms = old.norms,
+                  chunks = old.chunks,
+                  entities = old.entities,
+                  graphs = old.graphs
+              )
+              sentences.append(s)
+          if doc.text:
+              text += doc.text
+              offset += len(doc.text)
+
+      return Document(
+          id = docs[0].id,
+          text=text if len(text) &gt; 0 else None,
+          sentences=sentences
+      )
 
     # size : int
     #     The number of `sentences`.
@@ -146,8 +179,7 @@ class Document(BaseModel):
 <p>Create a new model by parsing and validating input data from keyword arguments.</p>
 <p>Raises [<code>ValidationError</code>][pydantic_core.ValidationError] if the input data cannot be
 validated to form a valid model.</p>
-<p><code>__init__</code> uses <code>__pydantic_self__</code> instead of the more common <code>self</code> for the first arg to
-allow <code>self</code> as a field name.</p></div>
+<p><code>self</code> is explicitly positional-only to allow <code>self</code> as a field name.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -165,6 +197,38 @@ allow <code>self</code> as a field name.</p></div>
     text: typing.Optional[str] = Field(default=None, description=&#34; The text of the `Document`.&#34;)
 
     sentences: list[Sentence] = Field(description=&#34;The sentences comprising the `Document`.&#34;)
+
+    @staticmethod
+    def merge_documents(docs: list[Document]) -&gt; Document:
+      &#34;&#34;&#34;Merges two or more Documents into a single Document.&#34;&#34;&#34;
+      text = &#34;&#34;
+      sentences = []
+      offset = 0
+      for doc in docs:
+          for old in doc.sentences:
+              s = Sentence(
+                  text = old.text,
+                  raw = old.raw,
+                  words = old.words,
+                  startOffsets = [i + offset for i in old.start_offsets],
+                  endOffsets = [i + offset for i in old.end_offsets],
+                  tags= old.tags,
+                  lemmas = old.lemmas,
+                  norms = old.norms,
+                  chunks = old.chunks,
+                  entities = old.entities,
+                  graphs = old.graphs
+              )
+              sentences.append(s)
+          if doc.text:
+              text += doc.text
+              offset += len(doc.text)
+
+      return Document(
+          id = docs[0].id,
+          text=text if len(text) &gt; 0 else None,
+          sentences=sentences
+      )
 
     # size : int
     #     The number of `sentences`.
@@ -256,6 +320,10 @@ allow <code>self</code> as a field name.</p></div>
 <dd>
 <div class="desc"></div>
 </dd>
+<dt id="lum.clu.processors.document.Document.model_computed_fields"><code class="name">var <span class="ident">model_computed_fields</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt id="lum.clu.processors.document.Document.model_config"><code class="name">var <span class="ident">model_config</span></code></dt>
 <dd>
 <div class="desc"></div>
@@ -271,6 +339,51 @@ allow <code>self</code> as a field name.</p></div>
 <dt id="lum.clu.processors.document.Document.text"><code class="name">var <span class="ident">text</span> : Optional[str]</code></dt>
 <dd>
 <div class="desc"></div>
+</dd>
+</dl>
+<h3>Static methods</h3>
+<dl>
+<dt id="lum.clu.processors.document.Document.merge_documents"><code class="name flex">
+<span>def <span class="ident">merge_documents</span></span>(<span>docs: list[<a title="lum.clu.processors.document.Document" href="#lum.clu.processors.document.Document">Document</a>]) ‑> <a title="lum.clu.processors.document.Document" href="#lum.clu.processors.document.Document">Document</a></span>
+</code></dt>
+<dd>
+<div class="desc"><p>Merges two or more Documents into a single Document.</p></div>
+<details class="source">
+<summary>
+<span>Expand source code</span>
+</summary>
+<pre><code class="python">@staticmethod
+def merge_documents(docs: list[Document]) -&gt; Document:
+  &#34;&#34;&#34;Merges two or more Documents into a single Document.&#34;&#34;&#34;
+  text = &#34;&#34;
+  sentences = []
+  offset = 0
+  for doc in docs:
+      for old in doc.sentences:
+          s = Sentence(
+              text = old.text,
+              raw = old.raw,
+              words = old.words,
+              startOffsets = [i + offset for i in old.start_offsets],
+              endOffsets = [i + offset for i in old.end_offsets],
+              tags= old.tags,
+              lemmas = old.lemmas,
+              norms = old.norms,
+              chunks = old.chunks,
+              entities = old.entities,
+              graphs = old.graphs
+          )
+          sentences.append(s)
+      if doc.text:
+          text += doc.text
+          offset += len(doc.text)
+
+  return Document(
+      id = docs[0].id,
+      text=text if len(text) &gt; 0 else None,
+      sentences=sentences
+  )</code></pre>
+</details>
 </dd>
 </dl>
 </dd>
@@ -294,6 +407,8 @@ allow <code>self</code> as a field name.</p></div>
 <h4><code><a title="lum.clu.processors.document.Document" href="#lum.clu.processors.document.Document">Document</a></code></h4>
 <ul class="">
 <li><code><a title="lum.clu.processors.document.Document.id" href="#lum.clu.processors.document.Document.id">id</a></code></li>
+<li><code><a title="lum.clu.processors.document.Document.merge_documents" href="#lum.clu.processors.document.Document.merge_documents">merge_documents</a></code></li>
+<li><code><a title="lum.clu.processors.document.Document.model_computed_fields" href="#lum.clu.processors.document.Document.model_computed_fields">model_computed_fields</a></code></li>
 <li><code><a title="lum.clu.processors.document.Document.model_config" href="#lum.clu.processors.document.Document.model_config">model_config</a></code></li>
 <li><code><a title="lum.clu.processors.document.Document.model_fields" href="#lum.clu.processors.document.Document.model_fields">model_fields</a></code></li>
 <li><code><a title="lum.clu.processors.document.Document.sentences" href="#lum.clu.processors.document.Document.sentences">sentences</a></code></li>

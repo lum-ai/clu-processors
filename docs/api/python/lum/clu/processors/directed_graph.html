@@ -273,7 +273,7 @@ class DirectedGraph(BaseModel):
 <span>(</span><span>**data: Any)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Usage docs: <a href="https://docs.pydantic.dev/2.5/concepts/models/">https://docs.pydantic.dev/2.5/concepts/models/</a></p>
+<div class="desc"><p>Usage docs: <a href="https://docs.pydantic.dev/2.6/concepts/models/">https://docs.pydantic.dev/2.6/concepts/models/</a></p>
 <p>A base class for creating Pydantic models.</p>
 <h2 id="attributes">Attributes</h2>
 <dl>
@@ -316,8 +316,7 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
 <p>Create a new model by parsing and validating input data from keyword arguments.</p>
 <p>Raises [<code>ValidationError</code>][pydantic_core.ValidationError] if the input data cannot be
 validated to form a valid model.</p>
-<p><code>__init__</code> uses <code>__pydantic_self__</code> instead of the more common <code>self</code> for the first arg to
-allow <code>self</code> as a field name.</p></div>
+<p><code>self</code> is explicitly positional-only to allow <code>self</code> as a field name.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -592,6 +591,10 @@ Produces a list of syntactic dependencies where each edge is labeled with its gr
 bag_of_unlabeled_dependencies_from_tokens(form)
 Produces a list of syntactic dependencies where each edge is left unlabeled without its grammatical relation.</p></div>
 </dd>
+<dt id="lum.clu.processors.directed_graph.DirectedGraph.model_computed_fields"><code class="name">var <span class="ident">model_computed_fields</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt id="lum.clu.processors.directed_graph.DirectedGraph.model_config"><code class="name">var <span class="ident">model_config</span></code></dt>
 <dd>
 <div class="desc"></div>
@@ -628,6 +631,7 @@ Produces a list of syntactic dependencies where each edge is left unlabeled with
 <li><code><a title="lum.clu.processors.directed_graph.DirectedGraph.STANFORD_BASIC_DEPENDENCIES" href="#lum.clu.processors.directed_graph.DirectedGraph.STANFORD_BASIC_DEPENDENCIES">STANFORD_BASIC_DEPENDENCIES</a></code></li>
 <li><code><a title="lum.clu.processors.directed_graph.DirectedGraph.STANFORD_COLLAPSED_DEPENDENCIES" href="#lum.clu.processors.directed_graph.DirectedGraph.STANFORD_COLLAPSED_DEPENDENCIES">STANFORD_COLLAPSED_DEPENDENCIES</a></code></li>
 <li><code><a title="lum.clu.processors.directed_graph.DirectedGraph.edges" href="#lum.clu.processors.directed_graph.DirectedGraph.edges">edges</a></code></li>
+<li><code><a title="lum.clu.processors.directed_graph.DirectedGraph.model_computed_fields" href="#lum.clu.processors.directed_graph.DirectedGraph.model_computed_fields">model_computed_fields</a></code></li>
 <li><code><a title="lum.clu.processors.directed_graph.DirectedGraph.model_config" href="#lum.clu.processors.directed_graph.DirectedGraph.model_config">model_config</a></code></li>
 <li><code><a title="lum.clu.processors.directed_graph.DirectedGraph.model_fields" href="#lum.clu.processors.directed_graph.DirectedGraph.model_fields">model_fields</a></code></li>
 <li><code><a title="lum.clu.processors.directed_graph.DirectedGraph.roots" href="#lum.clu.processors.directed_graph.DirectedGraph.roots">roots</a></code></li>

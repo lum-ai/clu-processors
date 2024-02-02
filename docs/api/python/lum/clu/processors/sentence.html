@@ -28,7 +28,7 @@
 <span>Expand source code</span>
 </summary>
 <pre><code class="python">from __future__ import annotations
-from pydantic import BaseModel, Field, model_validator
+from pydantic import BaseModel, ConfigDict, Field, model_validator
 from lum.clu.processors.directed_graph import DirectedGraph
 from lum.clu.processors.utils import Labels
 import typing
@@ -44,7 +44,10 @@ class Sentence(BaseModel):
     &#34;&#34;&#34;
     Storage class for an annotated sentence. Based on [`org.clulab.processors.Sentence`](https://github.com/clulab/processors/blob/master/main/src/main/scala/org/clulab/processors/Sentence.scala)
     &#34;&#34;&#34;
-    text: typing.Optional[str] = Field(default=None, description=&#34; The text of the `Sentence`.&#34;)
+
+    model_config = ConfigDict(populate_by_name=True)
+
+    text: typing.Optional[str] = Field(default=None, description=&#34; The text of the `Sentence`.&#34;, exclude=True)
 
     raw: list[str] = Field(description=&#34;Raw tokens in this sentence; these are expected to match the original text&#34;)
     
@@ -65,7 +68,7 @@ class Sentence(BaseModel):
     entities: typing.Optional[list[str]] = Field(default=None, description=&#34;A list of the `Sentence`&#39;s tokens represented using IOB-style named entity (NE) labels.&#34;)
 
     graphs: dict[str, DirectedGraph] = Field(description=&#34;A dictionary (str -&gt; `lum.clu.processors.doc.DirectedGraph`) mapping the graph type/name to a `lum.clu.processors.doc.DirectedGraph`.&#34;)
-
+    
     @model_validator(mode=&#34;before&#34;)
     @classmethod
     def raw_or_words(cls, data: typing.Any) -&gt; typing.Any:
@@ -261,7 +264,7 @@ class Sentence(BaseModel):
 <span>(</span><span>**data: Any)</span>
 </code></dt>
 <dd>
-<div class="desc"><p>Usage docs: <a href="https://docs.pydantic.dev/2.5/concepts/models/">https://docs.pydantic.dev/2.5/concepts/models/</a></p>
+<div class="desc"><p>Usage docs: <a href="https://docs.pydantic.dev/2.6/concepts/models/">https://docs.pydantic.dev/2.6/concepts/models/</a></p>
 <p>A base class for creating Pydantic models.</p>
 <h2 id="attributes">Attributes</h2>
 <dl>
@@ -304,8 +307,7 @@ This replaces <code>Model.__validators__</code> and <code>Model.__root_validator
 <p>Create a new model by parsing and validating input data from keyword arguments.</p>
 <p>Raises [<code>ValidationError</code>][pydantic_core.ValidationError] if the input data cannot be
 validated to form a valid model.</p>
-<p><code>__init__</code> uses <code>__pydantic_self__</code> instead of the more common <code>self</code> for the first arg to
-allow <code>self</code> as a field name.</p></div>
+<p><code>self</code> is explicitly positional-only to allow <code>self</code> as a field name.</p></div>
 <details class="source">
 <summary>
 <span>Expand source code</span>
@@ -319,7 +321,10 @@ allow <code>self</code> as a field name.</p></div>
     &#34;&#34;&#34;
     Storage class for an annotated sentence. Based on [`org.clulab.processors.Sentence`](https://github.com/clulab/processors/blob/master/main/src/main/scala/org/clulab/processors/Sentence.scala)
     &#34;&#34;&#34;
-    text: typing.Optional[str] = Field(default=None, description=&#34; The text of the `Sentence`.&#34;)
+
+    model_config = ConfigDict(populate_by_name=True)
+
+    text: typing.Optional[str] = Field(default=None, description=&#34; The text of the `Sentence`.&#34;, exclude=True)
 
     raw: list[str] = Field(description=&#34;Raw tokens in this sentence; these are expected to match the original text&#34;)
     
@@ -340,7 +345,7 @@ allow <code>self</code> as a field name.</p></div>
     entities: typing.Optional[list[str]] = Field(default=None, description=&#34;A list of the `Sentence`&#39;s tokens represented using IOB-style named entity (NE) labels.&#34;)
 
     graphs: dict[str, DirectedGraph] = Field(description=&#34;A dictionary (str -&gt; `lum.clu.processors.doc.DirectedGraph`) mapping the graph type/name to a `lum.clu.processors.doc.DirectedGraph`.&#34;)
-
+    
     @model_validator(mode=&#34;before&#34;)
     @classmethod
     def raw_or_words(cls, data: typing.Any) -&gt; typing.Any:
@@ -555,6 +560,10 @@ allow <code>self</code> as a field name.</p></div>
 <dd>
 <div class="desc"></div>
 </dd>
+<dt id="lum.clu.processors.sentence.Sentence.model_computed_fields"><code class="name">var <span class="ident">model_computed_fields</span></code></dt>
+<dd>
+<div class="desc"></div>
+</dd>
 <dt id="lum.clu.processors.sentence.Sentence.model_config"><code class="name">var <span class="ident">model_config</span></code></dt>
 <dd>
 <div class="desc"></div>
@@ -654,7 +663,7 @@ def length(self) -&gt; int:
 <ul>
 <li>
 <h4><code><a title="lum.clu.processors.sentence.Sentence" href="#lum.clu.processors.sentence.Sentence">Sentence</a></code></h4>
-<ul class="two-column">
+<ul class="">
 <li><code><a title="lum.clu.processors.sentence.Sentence.O" href="#lum.clu.processors.sentence.Sentence.O">O</a></code></li>
 <li><code><a title="lum.clu.processors.sentence.Sentence.UNKNOWN" href="#lum.clu.processors.sentence.Sentence.UNKNOWN">UNKNOWN</a></code></li>
 <li><code><a title="lum.clu.processors.sentence.Sentence.chunks" href="#lum.clu.processors.sentence.Sentence.chunks">chunks</a></code></li>
@@ -663,6 +672,7 @@ def length(self) -&gt; int:
 <li><code><a title="lum.clu.processors.sentence.Sentence.graphs" href="#lum.clu.processors.sentence.Sentence.graphs">graphs</a></code></li>
 <li><code><a title="lum.clu.processors.sentence.Sentence.lemmas" href="#lum.clu.processors.sentence.Sentence.lemmas">lemmas</a></code></li>
 <li><code><a title="lum.clu.processors.sentence.Sentence.length" href="#lum.clu.processors.sentence.Sentence.length">length</a></code></li>
+<li><code><a title="lum.clu.processors.sentence.Sentence.model_computed_fields" href="#lum.clu.processors.sentence.Sentence.model_computed_fields">model_computed_fields</a></code></li>
 <li><code><a title="lum.clu.processors.sentence.Sentence.model_config" href="#lum.clu.processors.sentence.Sentence.model_config">model_config</a></code></li>
 <li><code><a title="lum.clu.processors.sentence.Sentence.model_fields" href="#lum.clu.processors.sentence.Sentence.model_fields">model_fields</a></code></li>
 <li><code><a title="lum.clu.processors.sentence.Sentence.norms" href="#lum.clu.processors.sentence.Sentence.norms">norms</a></code></li>
