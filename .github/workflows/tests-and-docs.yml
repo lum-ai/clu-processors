@@ -48,11 +48,12 @@ jobs:
     - name: "Unit tests and code coverage reports for Python components"
       run: |
         pytest -vvv
-
+  
     # docs (other)
     - name: "Create documentation (other)"
       run: |
-        docker run -i -v "$GITHUB_WORKSPACE:/app" parsertongue/mkdocs:latest mkdocs build -c
+        mkdocs build -c
+
     - name: Deploy docs
       if: github.ref == 'refs/heads/main'
       uses: peaceiris/actions-gh-pages@v3
