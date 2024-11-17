@@ -6,8 +6,6 @@ authors = [
 description = "Python interface to CLU processors"
 version = "0.1.0"
 dependencies=[
-    "Cython",
-    "numpy",
     "pydantic>=2.0.0",    
     "typing_extensions", # see https://github.com/pydantic/pydantic/issues/5821#issuecomment-1559196859
     "func_timeout"
@@ -25,7 +23,7 @@ dynamic = ["readme"]
 dev = ["pytest", "pytest-cov", "pytest-xdist", "black", "mypy", "coverage"]
 
 # project documentation generation
-doc = ["mkdocs==1.2.3", "pdoc3==0.10.0", "mkdocs-git-snippet==0.1.1", "mkdocs-git-revision-date-localized-plugin==0.11.1", "mkdocs-git-authors-plugin==0.6.3", "mkdocs-rtd-dropdown==1.0.2", "jinja2<3.1.0"]
+doc = ["mkdocs==1.2.3", "pdoc3==0.10.0", "mkdocs-git-snippet==0.1.1", "mkdocs-git-revision-date-localized-plugin==0.11.1", "mkdocs-git-authors-plugin==0.6.3", "mkdocs-rtd-dropdown==1.0.2", "jinja2<3.1.0", "mkdocs-mermaid2-plugin"]
 
 highlight = ["termcolor"]
 
